@@ -1,1 +1,49 @@
-<p>contract-form works!</p>
+<div class="container">
+  <h2>Procurement Contract Entry</h2>
+
+  <mat-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="generalInfoStep">
+      <form [formGroup]="generalInfoStep">
+        <ng-template matStepLabel>General Info</ng-template>
+
+        <div class="form-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>Full Contract No</mat-label>
+            <input matInput formControlName="contractNo" placeholder="23.27.0000...">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Short No</mat-label>
+            <input matInput formControlName="shortNo" placeholder="e.g. 1">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Fiscal Year</mat-label>
+            <mat-select formControlName="fiscalYear">
+              <mat-option value="2024-25">2024-25</mat-option>
+              <mat-option value="2025-26">2025-26</mat-option>
+              <mat-option value="2026-27">2026-27</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Contract Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="contractDate">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Next Step</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Stakeholders</ng-template>
+      <p>Principal and Manufacturer details coming soon...</p>
+      <button mat-button matStepperPrevious>Back</button>
+    </mat-step>
+  </mat-stepper>
+</div>
